@@ -1,0 +1,7 @@
+C:\Users\umlau\source\repos\IO-lab1\IO-lab1\bin\Debug\IO-lab1.exe.config
+C:\Users\umlau\source\repos\IO-lab1\IO-lab1\bin\Debug\IO-lab1.exe
+C:\Users\umlau\source\repos\IO-lab1\IO-lab1\bin\Debug\IO-lab1.pdb
+C:\Users\umlau\source\repos\IO-lab1\IO-lab1\obj\Debug\IO-lab1.csprojResolveAssemblyReference.cache
+C:\Users\umlau\source\repos\IO-lab1\IO-lab1\obj\Debug\IO-lab1.csproj.CoreCompileInputs.cache
+C:\Users\umlau\source\repos\IO-lab1\IO-lab1\obj\Debug\IO-lab1.exe
+C:\Users\umlau\source\repos\IO-lab1\IO-lab1\obj\Debug\IO-lab1.pdb
