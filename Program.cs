@@ -13,15 +13,37 @@ namespace ConsoleApp1
     {
         static object lockObj = new object();
 
-        
-        static void Main(string[] args)
+        static void zad4()
         {
-
             ThreadPool.QueueUserWorkItem(Server);
             ThreadPool.QueueUserWorkItem(Client);
             ThreadPool.QueueUserWorkItem(Client);
             while (true) ;
         }
+        static void zad5(int dlugosc, int fragment)
+        {
+            int[] tab = new int[dlugosc];
+            Random rnd = new Random();
+            for (int i=0;i<tab.Length;i++)
+            {
+                tab[i] = rnd.Next(0, 100);
+                Console.WriteLine(tab[i]);
+            }
+
+            Console.ReadKey();
+            ThreadPool.QueueUserWorkItem(sumuj, new object[] { tab });
+            ThreadPool.QueueUserWorkItem(sumuj, new object[] { tab });
+            ThreadPool.QueueUserWorkItem(sumuj, new object[] { tab });
+            Thread.Sleep(5000);
+            Console.WriteLine(tab[0]);
+        }
+
+        static void Main(string[] args)
+        {
+            zad5(100,100);
+
+        }
+
         static void Client(Object stateInfo)
         {
             TcpClient client = new TcpClient();
@@ -61,6 +83,7 @@ namespace ConsoleApp1
                 if (result == "END") break;
             }
         }
+
         static void writeConsoleMessage(string message, ConsoleColor color)
         {
             lock (lockObj)
@@ -68,6 +91,22 @@ namespace ConsoleApp1
                 Console.ForegroundColor = color;
                 Console.WriteLine(message);
                 Console.ResetColor();
+            }
+        }
+        static void sumuj(Object stateInfo)
+        {
+            while(true)
+            lock (lockObj)
+            {
+                int[] tab = (int[])((object[])stateInfo)[0];
+                if (tab[1] == -1) break;
+                Console.WriteLine("{0}+{1}={2}",tab[0],tab[1],tab[0]+tab[1]);
+                tab[0] += tab[1];
+                for (int i=1;i<tab.Length-i;i++)
+                {
+                    tab[i] = tab[i + 1];
+                    tab[i + 1] = -1;
+                }
             }
         }
     }
